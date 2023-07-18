@@ -1,15 +1,16 @@
 {
-  "functions": {
-    "lib/api/*.js": {
-      "memory": 128,
-      "maxDuration": 10
-    }
-  },
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "https://github.com/kaizencc/cdk-stats"
-    }
+  "version": 2,
+  "builds": [
+      {
+          "src": "dist/index.js",
+          "use": "@vercel/node",
+          "config": { "includeFiles": ["dist/**"] }
+      }
   ],
-  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
+  "routes": [
+      {
+          "src": "/(.*)",
+          "dest": "dist/index.js"
+      }
+  ]
 }
