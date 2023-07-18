@@ -13,8 +13,8 @@ app.set("view engine", "ejs");
 // define a route handler for the default home page
 app.get("/", (_req, res) => {
     // render the index template
-    // res.render("index");
-    return res.send('Express Typescript on Vercel');
+    return res.render("index");
+    // return res.send('Express Typescript on Vercel');
 });
 app.get('/ping', (_req, res) => {
     return res.send('pong 🏓');
