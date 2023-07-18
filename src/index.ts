@@ -4,14 +4,10 @@ import path from "path";
 const app = express();
 const port = process.env.PORT || 8080; // default port to listen
 
-// Configure Express to use EJS
-app.set("views", path.join(__dirname, "views"));
-app.set("view engine", "ejs");
-
 // define a route handler for the default home page
 app.get("/", (_req: Request, res: Response) => {
   // render the index template
-  return res.render("index");
+  return res.sendFile(path.join(__dirname, '..', 'html', 'index.html'));
   // return res.send('Express Typescript on Vercel');
 });
 
