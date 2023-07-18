@@ -9,6 +9,7 @@ const port = process.env.PORT || 8080; // default port to listen
 // define a route handler for the default home page
 app.get("/", (_req, res) => {
     // render the index template
+    res.setHeader("Content-Type", "image/svg+xml");
     return res.send(`
   <svg height="400" width="450">
   <path id="lineAB" d="M 100 350 l 150 -300" stroke="red" stroke-width="3" fill="none" />
