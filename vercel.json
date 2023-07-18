@@ -10,5 +10,6 @@
       "source": "/",
       "destination": "https://github.com/kaizencc/cdk-stats"
     }
-  ]
+  ],
+  "rewrites": [{ "source": "/api/(.*)", "destination": "/api" }]
 }
