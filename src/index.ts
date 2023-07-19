@@ -6,17 +6,17 @@ const app = express();
 const port = process.env.PORT || 8080; // default port to listen
 
 // define a route handler for the default home page
-app.get("/", (_req: Request, res: Response) => {
+app.get("/", async (_req: Request, res: Response) => {
   res.setHeader("Content-Type", "image/svg+xml");
-  return res.send(renderCdkCard({ username: 'kaizencc'}));
+  return res.send(await renderCdkCard({ username: 'kaizencc'}));
 });
 
-app.get('/api', (req: Request, res: Response) => {
+app.get('/api', async (req: Request, res: Response) => {
   const {
     username,
   } = req.query;
   res.setHeader("Content-Type", "image/svg+xml");
-  return res.send(renderCdkCard({ username: username.toString()}));
+  return res.send(await renderCdkCard({ username: username.toString()}));
 });
 
 // start the express server
