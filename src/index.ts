@@ -19,6 +19,11 @@ app.get('/api', async (req: Request, res: Response) => {
   return res.send(await renderCdkCard({ username: username.toString()}));
 });
 
+app.get('/icon', async (_req: Request, res: Response) => {
+  res.setHeader("Content-Type", "image/svg+xml");
+  return res.sendFile(path.join(__dirname, 'icons', 'cdk.svg'));
+});
+
 // start the express server
 app.listen(port, () => {
   // tslint:disable-next-line:no-console
