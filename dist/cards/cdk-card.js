@@ -103,7 +103,7 @@ function renderCdkCard(opts) {
       <text x="${adjLength + adjSpacing + 30}" y="538" class="primary" textLength="700" font-weight="500">Contributor</text>
     </g>
     <g aria-hidden="true" text-anchor="start" font-family='-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' font-size="100">
-      <image x="130" y="238" width="1000" xlink:href="https://cdk-stats.vercel.app/api?username=kaizencc"></image>
+      <image x="130" y="238" width="1000" xlink:href="https://cdk-stats.vercel.app/icon"></image>
     </g>
   </svg>
   `;
