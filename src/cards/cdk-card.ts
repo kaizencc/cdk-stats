@@ -7,8 +7,22 @@ export interface renderCdkCardOptions {
 export async function renderCdkCard(opts: renderCdkCardOptions) {
   const query = `
     {
-      search(query: "repo:aws/aws-cdk is:pr is:merged author:${opts.username}", type: ISSUE, last: 100) {
+      search(query: "repo:aws/aws-cdk is:pr is:merged author:${opts.username}", type: ISSUE, last:1) {
         issueCount
+        edges {
+          node {
+            ... on PullRequest {
+              url
+              title
+              createdAt
+              labels(first:20) {
+                nodes {
+                  name
+                }
+              }
+            }
+          }
+        }
       }
     }
   `;
@@ -23,9 +37,24 @@ export async function renderCdkCard(opts: renderCdkCardOptions) {
   if (res.data.errors) return res;
   const issueCount = res.data.data.search.issueCount;
   console.log(issueCount);
+  const issueCountLength = issueCount.toString().length * 65;
+  const labels = res.data.data.search.edges[0].node.labels.nodes as { name: string }[];
+  console.log(labels);
+  let adjective = '';
+  const contributorLabel = labels.filter((l) => l.name.includes('-contributor'));
+  if (labels.filter((l) => l.name === 'contribution/core').length > 0) {
+    adjective = 'Core';
+  }
+  if (contributorLabel.length > 0) {
+    adjective = contributorLabel[0].name.split('-')[0];
+  }
+  adjective = adjective.charAt(0).toUpperCase() + adjective.slice(1);
+  console.log(adjective);
+  const adjLength = adjective.length * 55;
+  const adjSpacing = 385 - adjective.length * 23;
 
   return `
-    <svg height="100" viewBox="0 0 1600 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="View on Construct Hub">
+    <svg height="100" viewBox="0 0 1600 700" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="View on Construct Hub">
     <style>
       rect.bg {
         fill: rgb(237, 242, 247);
@@ -46,19 +75,24 @@ export async function renderCdkCard(opts: renderCdkCardOptions) {
       }
     </style>
     <title>CDK Contributor Card</title>
-    <mask id="m"><rect width="1600" height="500" rx="50" fill="#FFF"/></mask>
+    <mask id="m"><rect width="1600" height="700" rx="50" fill="#FFF"/></mask>
     <g mask="url(#m)">
-      <rect width="1600" height="500" class="bg"/>
-      <rect width="1600" height="500" fill="url(#a)"/>
+      <rect width="1600" height="700" class="bg"/>
+      <rect width="1600" height="700" fill="url(#a)"/>
     </g>
     <g aria-hidden="true" text-anchor="start" font-family='-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' font-size="100">
-      <text x="110" y="138" class="primary" textLength="420" font-weight="500">AWS CDK</text>
-      <text x="560" y="138" class="secondary" textLength="600" font-weight="650">Contributor</text>
-      <text x="1190" y="138" class="primary" textLength="230" font-weight="500">Card</text>
+      <text x="130" y="138" class="primary" textLength="420" font-weight="500">AWS CDK</text>
+      <text x="580" y="138" class="secondary" textLength="600" font-weight="650">Contributor</text>
+      <text x="1210" y="138" class="primary" textLength="230" font-weight="500">Card</text>
     </g>
     <g aria-hidden="true" text-anchor="start" font-family='-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' font-size="100">
-      <text x="220" y="338" class="primary" textLength="1000" font-weight="500">${issueCount} Contributions</text>
+      <text x="${400 - issueCountLength}" y="338" class="secondary" textLength="${issueCountLength}" font-weight="650">${issueCount}</text>
+      <text x="430" y="338" class="primary" textLength="850" font-weight="500">Contributions</text>
     </g>
+    <g aria-hidden="true" text-anchor="start" font-family='-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"' font-size="100">
+    <text x="${adjSpacing}" y="538" class="secondary" textLength="${adjLength}" font-weight="650">${adjective}</text>
+    <text x="${adjLength + adjSpacing + 30}" y="538" class="primary" textLength="700" font-weight="500">Contributor</text>
+  </g>
   </svg>
   `;
 }
