@@ -5,8 +5,8 @@ export function cdk() {
     <desc>Created with Sketch.</desc>
     <defs>
         <linearGradient x1="0%" y1="100%" x2="100%" y2="0%" id="linearGradient-1">
-            <stop stop-color="#2E27AD" offset="0%"></stop>
-            <stop stop-color="#527FFF" offset="100%"></stop>
+            <stop stop-color="#282b34" offset="0%"></stop>
+            <stop stop-color="#282b34" offset="100%"></stop>
         </linearGradient>
     </defs>
     <g id="Icon-Architecture/64/Arch_AWS-Cloud-Development-Kit_64" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
