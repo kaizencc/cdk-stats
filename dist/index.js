@@ -14,7 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cdk_card_1 = require("./cards/cdk-card");
-const cdk_1 = require("./icons/cdk");
 const app = (0, express_1.default)();
 const port = process.env.PORT || 8080; // default port to listen
 // define a route handler for the default home page
@@ -27,10 +26,6 @@ app.get('/api', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.setHeader("Content-Type", "image/svg+xml");
     return res.send(yield (0, cdk_card_1.renderCdkCard)({ username: username.toString() }));
 }));
-app.get('/icon', (_req, res) => {
-    res.setHeader("Content-Type", "image/svg+xml");
-    return res.send((0, cdk_1.cdk)());
-});
 // start the express server
 app.listen(port, () => {
     // tslint:disable-next-line:no-console

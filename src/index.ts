@@ -1,7 +1,5 @@
 import express, { Request, Response } from 'express';
-import path from "path";
 import { renderCdkCard } from './cards/cdk-card';
-import { cdk } from './icons/cdk';
 
 const app = express();
 const port = process.env.PORT || 8080; // default port to listen
@@ -18,11 +16,6 @@ app.get('/api', async (req: Request, res: Response) => {
   } = req.query;
   res.setHeader("Content-Type", "image/svg+xml");
   return res.send(await renderCdkCard({ username: username.toString()}));
-});
-
-app.get('/icon', (_req: Request, res: Response) => {
-  res.setHeader("Content-Type", "image/svg+xml");
-  return res.send(cdk());
 });
 
 // start the express server
