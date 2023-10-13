@@ -70,7 +70,7 @@ export async function renderCdkCard(opts: renderCdkCardOptions) {
           fill: rgb(40, 43, 52);
         }
         text.primary {
-          fill: rgb(212, 213, 214);
+          fill: rgb(26, 32, 44);
         }
       }
       .icon svg {
