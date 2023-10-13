@@ -65,7 +65,7 @@ function renderCdkCard(opts) {
         fill: rgb(237, 242, 247);
       }
       text.primary {
-        fill: rgb(26, 32, 44);
+        fill: rgb(212, 213, 214);
       }
       text.secondary {
         fill: rgb(300, 150, 112);
@@ -75,7 +75,7 @@ function renderCdkCard(opts) {
           fill: rgb(40, 43, 52);
         }
         text.primary {
-          fill: rgb(26, 32, 44);
+          fill: rgb(212, 213, 214);
         }
       }
       .icon svg {
