@@ -15,6 +15,31 @@ Then, you can add it to your personal GitHub README page. Just add the following
 Now, your markdown file will dynamically render your personal stats, which will update every time you contribute to the
 [aws-cdk](https://github.com/aws/aws-cdk). Thanks for contributing to that open source project!
 
+## Development
+
+To run this library on a local server, you must have a GitHub PAT capable of accessing data
+related to the `aws/aws-cdk` repository.
+
+```bash
+echo PAT_1=<github-access-token>
+```
+
+To start the server, run:
+
+```bash
+yarn install
+yarn start
+```
+
+Then you can hit the API via http://localhost:8080 (or at a different port provided via the `PORT` environment variable).
+
+## Vercel
+
+This app is deployed on Vercel, because I wanted to try out the service. It was extremely easy to
+set up, and I recommend it :). It integrates with GitHub seamlessly.
+
+The application will automatically re-deploy whenever I push to the `main` branch.
+
 ## Contributing
 
 Please do! If you are a experienced in frontend and think you can render a better .svg file, I would looove your help.
