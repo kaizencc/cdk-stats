@@ -40,6 +40,8 @@ set up, and I recommend it :). It integrates with GitHub seamlessly.
 
 The application will automatically re-deploy whenever I push to the `main` branch.
 
+I use my personal GitHub access token that is stored in Vercel. This needs to be updated every 90 days.
+
 ## Contributing
 
 Please do! If you are a experienced in frontend and think you can render a better .svg file, I would looove your help.
