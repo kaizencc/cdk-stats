@@ -46,4 +46,3 @@ I use my personal GitHub access token that is stored in Vercel. This needs to be
 
 Please do! If you are a experienced in frontend and think you can render a better .svg file, I would looove your help.
 If you have a feature request or good idea please cut a GitHub issue and I will do my best :).
- 
