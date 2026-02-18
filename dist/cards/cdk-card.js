@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.renderCdkCard = void 0;
+exports.renderCdkCard = renderCdkCard;
 const utils_1 = require("../common/utils");
 function renderCdkCard(opts) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -111,5 +111,4 @@ function renderCdkCard(opts) {
   `;
     });
 }
-exports.renderCdkCard = renderCdkCard;
 //# sourceMappingURL=cdk-card.js.map
